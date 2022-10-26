@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sql.unity.mapper">
+	<sql id="selectUser">
+		select 
+		CLIENT_ID, USER_LEVEL, LOTATE_X, LOTATE_Y, LOTATE_Z, EXIT_TIME, FIN_TIMES
+		from user_info
+	</sql>
+	
+	<!-- create -->
+	<insert id="registerUser" parameterType="user">
+		INSERT INTO user2(user_id, user_pw,user_name,user_email,
+						user_address,user_number,user_balance,user_point,register_date,user_group)
+		VALUES(#{userId},#{userPw},#{userName},#{userEmail},#{userAddress},
+				#{userNumber},#{userBalance},#{userPoint},sysdate,'회원')
+	</insert>
+	
+	
+	<!-- read -->
+	<select id="getUserByID" parameterType="string" resultType="user">
+		select 
+		CLIENT_ID, USER_LEVEL, LOTATE_X, LOTATE_Y, LOTATE_Z, EXIT_TIME, FIN_TIMES
+		from user_info
+		WHERE CLIENT_ID = #{value}
+	</select>
+	
+	<select id="getUserWarnings" parameterType="string" resultType="userWarnings">
+		SELECT
+		CLIENT_ID, WARNING_ID
+		FROM USER_WARNINGS
+		WHERE CLIENT_ID = #{value}
+	</select>
+	
+	<select id="getSetting" parameterType="string" resultType="setting">
+		SELECT
+		CLIENT_ID, VOICE_TYPE, IS_SIGNALMAN, EFFECT_SOUND, BACK_SOUND
+		FROM SETTING
+		WHERE CLIENT_ID = #{value}
+	</select>
+	
+	<!-- update -->
+	<update id="changeSetting" parameterType="setting">
+		UPDATE SETTING
+		SET
+		VOICE_TYPE = #{voiceType},
+		IS_SIGNALMAN = #{isSignalman},
+		EFFECT_SOUND = #{effectSound},
+		BACK_SOUND = #{backSound} 
+		WHERE CLIENT_ID = '4273504'
+	</update>
+	
+	
+		
+	
+	<update id="updateUser" parameterType="user">
+		UPDATE user2
+		SET user_pw=#{userPw}, user_email=#{userEmail}, user_address=#{userAddress},
+			user_number=#{userNumber}
+		WHERE user_id=#{userId}
+	</update>
+	
+	<update id="withDrawMoney" parameterType="user">
+		update user2 set user_balance = user_balance - #{userBalance}
+		where user_id = #{userId}
+	</update>
+	
+	<update id = "depositMoney" parameterType="user">
+		update user2 set user_balance = user_balance + #{userBalance}
+		where user_id = #{userId}
+	</update>
+		
+		
+	<!-- delete -->
+	<delete id="deleteUser" parameterType="string">
+		DELETE FROM user2 
+		WHERE user_id = #{value}
+	</delete>
+</mapper>

@@ -1,0 +1,71 @@
+@import url('http://fonts.cdnfonts.com/css/qillsey-einstein');
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+@font-face {
+    font-family: 'Busan';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//cdn.jsdelivr.net/korean-webfonts/1/orgs/govs/busan/Busan/Busan.woff2') format('woff2'),
+    url('//cdn.jsdelivr.net/korean-webfonts/1/orgs/govs/busan/Busan/Busan.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Frankfurter';
+    src: url('../fonts/Frankfurter.woff') format('woff');
+}
+
+* {
+    margin : 0;
+    padding : 0;
+    text-decoration: none;
+    list-style: none;
+    
+    
+}
+html, body {
+    width : 100%;
+    height : 100%;
+}
+
+
+
+.header{width:100%; height:95px;}
+
+.header .hTopIn{width:100%;background:#4999b4;color:#fff;}
+
+.header .hTopIn .adver{text-align:center;color:#fff;height:100px;line-height:100px;font-size:36px;} 
+/*높이 잡아주고...*/
+.header .hTopIn .down{width:100%;color:#4999b4; border:none;} /*버튼*/
+
+button{
+	color: #eeeeee;
+}
+
+.infocheck{
+	margin-left: 100px;
+	margin-top: 80px;
+	padding: 20px;
+	background-color: #eeeeee;
+	width: 360px;
+	height: 60px;
+}
+
+.userinfo{
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+.container1{
+	margin: 0 auto;
+	margin-top: 70px;
+	width: 80%;
+	height: 700px;
+	gap: 50px;
+}
+
+#myChart2{
+	margin-top: 50px;
+}
+
+
+
